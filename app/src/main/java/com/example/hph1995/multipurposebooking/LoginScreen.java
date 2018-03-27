@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginScreen extends AppCompatActivity {
+public class LoginScreen extends AppCompatActivity implements View.OnClickListener{
 
     private EditText txtusername, txtpass;
     private Button btnLogin, btnRegister;
@@ -21,12 +21,10 @@ public class LoginScreen extends AppCompatActivity {
 
         initializeUI();
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Login", Toast.LENGTH_SHORT).show();
-            }
-        });
+        btnLogin.setOnClickListener(this);
+        btnRegister.setOnClickListener(this);
+        txtForgotPass.setOnClickListener(this);
+
     }
 
     public void initializeUI()
@@ -38,4 +36,16 @@ public class LoginScreen extends AppCompatActivity {
         txtForgotPass = (TextView)findViewById(R.id.txtForgetPass);
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view == btnLogin){
+            Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+        }
+        else if(view == btnRegister){
+            Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
+        }
+        else if(view == txtForgotPass){
+            Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
