@@ -1,5 +1,6 @@
 package com.example.hph1995.multipurposebooking;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,12 +40,19 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if(view == btnLogin){
+            /*Intent intent = new Intent();
+            intent.setClass(getApplicationContext(), Registration.class);*/
             Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
         }
         else if(view == btnRegister){
+            Intent intent = new Intent();
+            intent.setClass(getApplicationContext(), Registration.class);
+            startActivity(intent);
             Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
         }
         else if(view == txtForgotPass){
+            /*Intent intent = new Intent();
+            intent.setClass(getApplicationContext(), Registration.class);*/
             Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
         }
     }

@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">MultiPurposeBooking</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="forgotpass">Forgot Password?</string>
+    <string name="registration">Registration</string>
+    <string name="fullname">Full Name</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="email">Email</string>
+    <string name="contactno">Contact No</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="country">Country</string>
+
+    <string-array name="list_city">
+        <item>Cat Museum</item>
+        <item>Sarawak Cultural Village</item>
+        <item>Sarawak State Museum</item>
+        <item>Sarawak Cultural Village</item>
+        <item>Mount Santubong</item>
+    </string-array>
+
+    <string-array name="list_state">
+        <item>Cat Museum</item>
+        <item>Sarawak Cultural Village</item>
+        <item>Sarawak State Museum</item>
+        <item>Sarawak Cultural Village</item>
+        <item>Mount Santubong</item>
+    </string-array>
+
+    <string-array name="list_country">
+        <item>Cat Museum</item>
+        <item>Sarawak Cultural Village</item>
+        <item>Sarawak State Museum</item>
+        <item>Sarawak Cultural Village</item>
+        <item>Mount Santubong</item>
+    </string-array>
 </resources>

@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/facilities" />
+            app:srcCompat="@drawable/swinlogo" />
 
         <EditText
             android:id="@+id/txtusername"
@@ -34,7 +34,7 @@
             android:drawableLeft="@drawable/ic_action_user"
             android:drawablePadding="5dp"
             android:ems="10"
-            android:hint="Username"
+            android:hint="@string/username"
             android:inputType="textPersonName"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
             android:drawableLeft="@drawable/ic_action_pass"
             android:drawablePadding="5dp"
             android:ems="10"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/background_login"
-            android:text="LOGIN"
+            android:text="@string/login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/background_register"
-            android:text="Register"
+            android:text="@string/register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
@@ -93,7 +93,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
-            android:text="Forgot Password?"
+            android:text="@string/forgotpass"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
