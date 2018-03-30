@@ -66,9 +66,11 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
             getPassWord = txtpass.getText().toString().trim();
             if(getUserName.equalsIgnoreCase("")) {
                 txtusername.setError("Please enter username");
+                txtusername.requestFocus();
             }
             else if(getPassWord.equalsIgnoreCase("")){
                 txtpass.setError("Please enter password");
+                txtpass.requestFocus();
             }
             else
                 checkLogin();
