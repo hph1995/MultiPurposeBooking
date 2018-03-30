@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,6 +25,8 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Registration extends AppCompatActivity {
 
@@ -52,7 +55,7 @@ public class Registration extends AppCompatActivity {
                 //Get Selected Radio Button Value
                 int selectedId = rdgbGender.getCheckedRadioButtonId();
                 RadioButton radioButton = (RadioButton) findViewById(selectedId);
-                //getGender = radioButton.getText().toString().trim();
+                getGender = radioButton.getText().toString().trim();
 
                 getUserName = txtUserName.getText().toString().trim();
                 getPassword = txtPassword.getText().toString().trim();
@@ -77,6 +80,10 @@ public class Registration extends AppCompatActivity {
                 else if(getEmail.equalsIgnoreCase("")){
                     txtEmail.setError("Please enter your email");
                     txtEmail.requestFocus();
+                }
+                else if(!isValidEmail(getEmail)){
+                    txtEmail.setError("Invalid email");
+                    txtEmail.setText("");
                 }
                 else if(getContactNo.equalsIgnoreCase("")){
                     txtContactNo.setError("Please enter your contact number");
@@ -111,6 +118,12 @@ public class Registration extends AppCompatActivity {
         txtCountry = (EditText)findViewById(R.id.txtCountry);
         rdgbGender = (RadioGroup)findViewById(R.id.rdgbGender);
         btnRegister = (Button)findViewById(R.id.btnRegister);
+
+        mProgress = new ProgressDialog(Registration.this);
+        mProgress.setTitle("Processing...");
+        mProgress.setMessage("Please wait...");
+        mProgress.setCancelable(false);
+        mProgress.setIndeterminate(true);
     }
 
     public void checkRegister(){
@@ -119,17 +132,17 @@ public class Registration extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(response.contains("Login Success!!!"))
+                        if(response.contains("Register Success!!!"))
                         {
                             mProgress.dismiss();
                             Toast.makeText(Registration.this,response,Toast.LENGTH_LONG).show();
                             Intent intent = new Intent();
-                            intent.setClass(getApplicationContext(), HomePage.class);
+                            intent.setClass(getApplicationContext(), LoginScreen.class);
                             startActivity(intent);
                         }
                         else{
                             mProgress.dismiss();
-                            Toast.makeText(Registration.this,"Invalid Username and Password!!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Registration.this,"Unable to register!!",Toast.LENGTH_LONG).show();
                         }
                     }
                 },
@@ -142,15 +155,25 @@ public class Registration extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
+                params.put("fullname",getFullName);
+                params.put("gender",getGender);
                 params.put("username",getUserName);
-                params.put("password",getCity);
+                params.put("password",getPassword);
+                params.put("email",getEmail);
+                params.put("contactno",getContactNo);
+                params.put("city",getCity);
+                params.put("state",getState);
+                params.put("country",getCountry);
                 return params;
             }
-
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 
     @Override
